@@ -1,4 +1,7 @@
 package org.example;
+
+import static java.lang.Math.max;
+
 public abstract class Ticket {
     private final int id;
     private final String requester;
@@ -35,17 +38,20 @@ public abstract class Ticket {
 
     public int estimateResolutionHours() {
         // TODO #1a
-        return -1;
+        int base = (6 - priority) * 2 + daysOpen;
+        return max(1, base * 1 + 0);
     }
 
     public int estimateResolutionHours(int complexityFactor) {
         // TODO #1b
-        return -1;
+        int base = (6 - priority) * 2 + daysOpen;
+        return max(1, base * complexityFactor  + 0);
     }
 
     public int estimateResolutionHours(int complexityFactor, int afterHoursPenalty) {
         // TODO #1c
-        return -1;
+        int base = (6 - priority) * 2 + daysOpen;
+        return max(1, base * complexityFactor  + afterHoursPenalty);
     }
 
     @Override
