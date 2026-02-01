@@ -1,4 +1,7 @@
 package org.example;
+
+import static java.lang.Math.min;
+
 public class HardwareTicket extends Ticket {
     private final String deviceType;     // e.g., "Laptop", "Desktop", "Printer"
     private final boolean labCritical;    // true if affects a lab/classroom
@@ -30,6 +33,15 @@ public class HardwareTicket extends Ticket {
     @Override
     public int urgencyScore() {
         // TODO #2
-        return -1;
+        int score = getPriority() * 10 + getDaysOpen() * 2;
+        if (isLabCritical()) {
+            score += 20;
+        }
+        score += min(getAffectedUsers(), 30);
+        if (getDeviceType().equalsIgnoreCase("Printer")) {
+            score += 5;
+        }
+
+        return score;
     }
 }
