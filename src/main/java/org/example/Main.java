@@ -31,5 +31,6 @@ public class Main {
         System.out.println("Base est: " + t.estimateResolutionHours());
         System.out.println("Complexity 2: " + t.estimateResolutionHours(2));
         System.out.println("Complexity 2 + after-hours 3: " + t.estimateResolutionHours(2, 3));
+
     }
 }
